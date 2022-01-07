@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		width: 100px;
+		margin: 10px;
+		padding: 10px;
+		text-align: center;
+		border: 1px solid red; /* width style color 한번에 입력 가능 */
+	}
+	
+	.div01 {
+		border-radius: 20px;
+	}
+	
+	.div02 {
+		border-radius: 20px; /* 꼭지점 둥글게 */
+		border-bottom-left-radius: 0; /* 해당하는 꼭지점만 따로 둥글기 설정 가능 */
+		border-top-right-radius: 0;
+		box-shadow: 10px 0px 0px 10px grey; /* 좌우 / 상하 / 투명도 / 확산도 그림자 생성 가능 */
+	}
+	
+	.div03{
+		border-radius: 60px / 30px;
+		
+	}
+	
+	
+	
+</style>
+</head>
+<body>
+	<div class="div01">사각형1</div>
+	<div class="div02">사각형2</div>
+	<div class="div03">사각형3</div>
+</body>
+</html>

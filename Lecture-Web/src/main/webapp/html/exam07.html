@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>우리분식 메뉴</h2>
+	
+	<select>
+		<option>떡볶이</option>
+		<option>김밥</option>
+		<option>튀김</option>
+		<option>돈까스</option>
+		<option>쫄면</option>
+	</select>
+	
+	<br>
+	<select size="3">
+		<option>떡볶이</option>
+		<option>김밥</option>
+		<option>튀김</option>
+		<option selected="selected">돈까스</option> <!-- 속성명과 속성 값이 같은 경우는 속성값 생략 가능 -->
+		<option>쫄면</option>
+	</select>
+	
+	<br>
+	<select multiple> <!-- 여러개 선택 가능 -->
+		<option>떡볶이</option>
+		<option>김밥</option>
+		<option>튀김</option>
+		<option>돈까스</option>
+		<option>쫄면</option>
+	</select>
+	
+	<br>
+	<select>
+		<optgroup label="분식류"> <!-- 옵션 그룹화 가능 -->
+			<option>떡볶이</option>
+			<option>순대</option>
+			<option>튀김</option>
+			<option>김밥</option>
+		</optgroup>
+		<optgroup label="식사류">
+			<option>돈까스</option>
+			<option>쫄면</option>
+			<option>김치볶음밥</option>
+		</optgroup>
+	</select>
+	
+	<br>
+	<input list="food02"> <!-- 자동완성같은 기능 (option = 자동완성에 들어갈 목록) -->
+	<datalist id="food01">
+			<option>떡볶이</option>
+			<option>순대</option>
+			<option>튀김</option>
+			<option>김밥</option>
+	</datalist>
+	<datalist id="food02">
+			<option>돈까스</option>
+			<option>쫄면</option>
+			<option>김치볶음밥</option>
+	</datalist>
+	
+</body>
+</html>

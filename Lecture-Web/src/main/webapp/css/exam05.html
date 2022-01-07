@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		width: 100px;
+		height: 100px;
+		position: relative; /* relative : static 기준으로 있어야했던 위치에서 옮겨짐 */
+	}
+
+	.red {
+		background-color: red;
+		left: 50px;
+	}
+	
+	.blue {
+		background-color: blue;
+		top: 50px;
+		left: 50px;
+	}
+	
+	.div01 {
+		width: 200px;
+		height: 200px;
+		left: 200px;
+		top: 200px;
+		background-color: lightgray;
+	}
+</style>
+</head>
+<body>
+	<div class="red">첫번째사각형</div>
+	<div class="blue">두번째사각형</div>
+	<div class="div01"> <!-- div영역 안에서 absolute가 잡힘  -->
+		<div class="red">세번째사각형</div>
+	</div>
+</body>
+</html>

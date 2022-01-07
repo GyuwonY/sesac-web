@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	h1 ~ h2{ /* 형제태그 검색 시 (h1태그 뒤에 나오는 모든 h2 태그) */
+		color: red;
+	}
+	
+	h1 + h2 { /* h1 바로 뒤에 h2가 나오는 경우 h2 태그 1개 */
+		color: green;
+	}
+</style>
+
+</head>
+<body>
+	<h2>Header2-1</h2>
+	<h1>Header1-1</h1>
+	<h3>Header3-1</h3>
+	<h2>Header2-2</h2>
+	<h2>Header2-3</h2>
+	<h2>Header2-4</h2>
+	<h2>Header2-5</h2>
+	<h2>Header2-6</h2>
+	<h1>Header1-1</h1>
+	<h2>Header2-7</h2>
+	<h2>Header2-8</h2>
+</body>
+</html>

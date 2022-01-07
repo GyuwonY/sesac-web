@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	p, h3 {
+		color : red
+	}
+	
+	.c01 {
+		color : blue
+	}
+	
+	h3.c02 {
+		color : green
+	} /* h3태그 중 c02 class 선택자 */
+	
+	#id01 {
+		background-color : yellow
+	} /* 특정한 태그를 선택하기 위해 사용 : 유니크 */
+	
+	#id02 {
+	 	color: puple
+	}
+	
+	.c03 {
+		background-color : lightgrey
+	}
+	
+</style>
+</head>
+<body>
+	<p class="c01">안녕하세요</p>
+	<div class = "c02">
+		안녕하세요
+	</div>
+	<h3 id="id01">안녕하세요</h3>
+	<p id="id01">안녕하세요</p>
+	<div class="c01">
+		안녕하세요
+	</div>
+	<h3 class = "c02">안녕하세요</h3>
+	<p class ="c01 c03">안녕하세요</p>
+	<p id="id02" class="c01">안녕하세요</p>
+	<!-- 클래스 다중사용 가능 / id 우선순위가 더 높다. -->  
+</body>
+</html>
+

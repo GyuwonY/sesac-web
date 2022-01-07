@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#numberlist li{
+		list-style-type: none;
+		float: left;
+		margin: 0px 10px 0px 0px; /* top 기준 시계방향 */ 
+	}
+	
+	li:first-child { /* li태그 중 첫번째 자식 */
+		color: orange;
+	}
+	
+	li:last-child {
+		color: blue;
+	}
+	
+	li:nth-child(2n) {
+		color: blue;
+	}
+	
+	a {
+		margin: 20px;
+	}
+	
+	a:link{ /* 링크 걸려있는 a태그에 대한 설정 */
+		color: pink;
+		text-decoration: none; /* 밑줄 설정 */
+	}
+	
+	a:visited { /* 방문했던 a태그에 대한 설정 */
+		color: pink;
+	}
+	
+	a:hover { /* 마우스 올렸을때 영역 색상 */
+		background-color: lightgray;
+		text-decoration: underline;
+	}
+	
+	p {
+		clear: both; /* float 설정 삭제 */
+	}
+	
+</style>
+</head>
+<body>
+	<ul id="numberlist">
+		<li>ONE</li>
+		<li>TWO</li>
+		<li>THREE</li>
+		<li>FOUR</li>
+		<li>FIVE</li>
+		<li>SIX</li>
+		<li>SEVEN</li>
+		<li>EIGHT</li>
+		<li>NINE</li>
+		<li>TEN</li>
+	</ul>
+	<p>
+		<a href="http://www.naver.com">NAVER</a>
+		<a href="http://www.daum.net">DAUM</a>
+	</p>
+</body>
+</html>
