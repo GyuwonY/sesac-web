@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+	alert(`a : ${a}, b: ${b}, c: ${c}`)
+	var a = 10 
+	let b = 20
+	const c = 30
+	*/
+	// var는 에러가 아닌 undefined 변수 호이스팅 var는 블록스코프 라이프 싸이클이 아니다.  
+	// let const : 에러 발생
+	
+	var a = 10
+	let b = 20
+	const c = 30
+	
+	alert(`a : ${a}, b: ${b}, c: ${c}`)
+	
+	a = a + 50
+	b = b + 50
+	// c = c + 50 // 상수화로 대입금지, 에러발생
+	
+	alert(`a : ${a}, b: ${b}, c: ${c}`)
+	// javascript는 에러가 하나라도 있으면 페이지 동작이 안될 수 있으니 개발자도구 콘솔창 확인 필요
+	
+	var a = 100
+	// let b = 200 // 재선언 금지, 에러발생
+	alert(`a : ${a}, b: ${b}, c: ${c}`)
+	
+	{
+		var temp = 1000
+		let letTemp = 2000
+		alert(`temp : ${temp}, letTemp : ${letTemp}`)
+	}
+	alert(`temp : ${temp}, letTemp : ${letTemp}`) // let만 선언 에러 발생, 
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

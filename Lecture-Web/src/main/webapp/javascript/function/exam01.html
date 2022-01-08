@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 선언적 함수 (함수 선언식)
+	function testFunction(){ 
+		alert('call...')
+	}
+	
+	function testFunction2(data){
+		alert('data : ' + data)
+	}
+	
+	function testFunction3(data, data2){
+		alert(`data : ${data}, data2 : ${data2}`)
+	}
+	
+	function sum(a,b){
+		return a + b
+	}
+	
+	var temp = function func() { // 변수명으로 호출하기 때문에 func() 필요없음
+		alert('call func()')
+	}
+	
+	// 익명 함수 (함수표현식) 콜백 형태로 많이 쓰임
+	var func01 = function() {
+		alert('call func01()....')
+	}
+	
+	var aaa = function() {
+		alert('익명함수 aaa 호출...')
+	}
+	
+	function aaa(){
+		alert('선언적 함수 aaa호출....')
+	}
+	
+	function callbackFunction(f){
+		f()
+	}
+	
+	callbackFunction(function(){ // 인자로 함수 선언부 자체를 넘길 수 있다. 콜백 함수
+		alert('익명함수 호출...')
+	})
+	
+	callbackFunction(testFunction) // function 자체가 타입이기 때문에 함수를 매개변수로 사용할 수 있다. 
+	callbackFunction(testFunction)
+	
+	aaa() // 익명 함수가 우선 순위가 높다.
+	
+	// func() 변수에 넣는 경우 함수명이 변수로 대체됨
+	temp()
+	
+	func01()
+	
+	let total = sum(10, 20)
+	alert(`총합 : ${total}`)
+	
+	testFunction() 
+	testFunction2(10) // 함수 오버로딩을 지원하지 않음
+	testFunction3(4, 9)
+</script>
+</head>
+<body>
+</body>
+</html>

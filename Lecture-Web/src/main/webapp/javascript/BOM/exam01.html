@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+ *  브라우저 객체 모델 (BOM)
+ *  - window : 최상위 객체
+ 		- location 객체 : url 부분
+ 		- navigator 객체
+ 		- history 객체 : 접속 이력 관련
+ 		- screen 객체 : 전체 창 관련
+ 		- document 객체 : 브라우저 바디
+ */
+ 	window.alert('!!!!') // 브라우저 실행 시 무조건 window 객체 생성되어 생략 가능
+ 	let sub = window.open('', '', 'width=400, height=300') // 팝업 오픈 가능
+ 	if(!sub) { // 새창이 열리지 않았을때
+ 		alert('팝업창 옵션을 확인하세요')
+ 	}
+ 
+ 	sub.moveTo(100,100) // 화면 기준 100,100 px 로 움직이기 
+ 	
+ 	/*
+ 	setInterval(function() {
+ 		sub.moveBy(20, 20) // 현재창 기준 20,20 움직이기
+ 	}, 1000)
+ 	*/
+ 	
+ 	let width = screen.width // screen 객체에서 사용자 해상도를 가지고 있음
+ 	let height = screen.height
+ 	
+ 	sub.resizeTo(width, height) // 브라우저 사이즈 조정하기
+ 	
+</script>
+</head>
+<body>
+</body>
+</html>

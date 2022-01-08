@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func(a, b){ // 함수 내 인자 기억을 위한 arguments라는 배열이 있기 때문에 매개변수 선언이 중요하지 않다. 
+		console.log(arguments.length, arguments[0], arguments[1])
+		console.log(a, b)
+	}
+	
+	func()
+	func('hello')
+	func(10, 20)
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let array = ['A', 123, 12.34, "Hello", true]
+	document.write(`첫번째 요소 : ${array[0]}<br>`)
+	document.write(`두번째 요소 : ${array[1]}<br>`)
+	document.write(`세번째 요소 : ${array[2]}<br>`)
+	document.write(`네번째 요소 : ${array[3]}<br>`)
+	document.write(`다섯번째 요소 : ${array[4]}<br>`)
+	document.write(`여섯번째 요소 : ${array[5]}<br>`) // 배열 인덱스가 초과해도 에러 발생하지 않는다
+	
+	array[8] = false
+	
+	document.write(array + '<br>') // 중간에 원소가 비어있어도 원소 구분하는 ,만 출력된다.
+	document.write('원소개수 : ' + array.length + '개<br>')
+	
+	array[array.lenth] = "add" // 배열의 길이는 데이터만큼 늘어난다.
+	document.write(`add 추가 후 array : ${array}, 원소 갯수 : ${array.length} <br>`)
+	
+	array.push("end")
+	document.write(`end추가 후 배열 개수 : ${array.length}<br>`)
+	document.write(array + '<br>')
+	
+	let data = array.pop()
+	document.write(`삭제된 원소 : ${data}<br>`)
+	document.write(array + '<br>')
+	//stack 구조에선 push pop
+	
+	// 배열에 아무 타입이나 넣을 수 있다.
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

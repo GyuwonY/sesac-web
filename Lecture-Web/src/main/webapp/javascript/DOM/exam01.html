@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+	DOM : document object model
+	
+	DOM은 body가 전부 로드된 상태에서만 사용할 수 있기 때문에 window.onload 안에서만 사용 가능하다. 
+*/
+	window.onload = function(){
+		alert(`innerHTML : ${document.body.innerHTML}`) // 태그 사이 HTML 텍스트 포함 모든 텍스트를 추출
+		alert(`innerText : ${document.body.innerText}`) // 태그 제외한 텍스트만 추출
+		
+		let tags = ''
+			tags += '<ul>'
+			tags += '	<li>red</li>'
+			tags += '	<li>green</li>'
+			tags += '	<li>blue</li>'
+			tags += '</ul>'
+
+//		document.body.innerHTML = tags
+//		document.body.innerText = tags
+		document.body.innerHTML += tags
+	}
+</script>
+</head>
+<body>
+	<h1>안녕하세요</h1>
+	Hello
+</body>
+</html>

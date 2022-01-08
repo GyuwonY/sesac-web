@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let array = [10, 20, 30]
+//	let copyArray = array // shallow copy(얕은복사)
+	
+	// deep copy (깊은 복사)
+	let copyArray = []
+	for(let data of array){
+		copyArray.push(data)
+	}
+	
+	document.write(`array : ${array}<br>`)
+	document.write(`copyArray : ${copyArray}<br>`)
+	
+	copyArray[1] = 2000
+	
+	document.write(`array : ${array}<br>`)
+	document.write(`copyArray : ${copyArray}<br>`)
+	
+	// 전개 연산자 : array 배열이 가지고 있는 원소를 풀어 씀
+	let copyArray2 = [...array]
+	
+	document.write(`array : ${array}<br>`)
+	document.write(`copyArray : ${copyArray}<br>`)
+	document.write(`copyArray2 : ${copyArray2}<br>`)
+</script>
+</head>
+<body>
+
+</body>
+</html>

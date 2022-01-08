@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let nums = [10, 34, 65, 23, 43, 8, 2]
+	
+	nums.forEach(function(element) {
+		document.write(element + '&nbsp;&nbsp;&nbsp;')
+	})
+	document.write('<br>')
+	
+	/*
+	let nums2 = []
+	for(let i in nums){
+		nums2[i] = nums[i] + 100
+	}
+	*/
+	
+	let nums2 = nums.map(function(element, index) { // map이 리턴받은 값을 원소로 배열을 만들어주기 때문에 deep copy
+		return element + 100
+	}) 
+	
+	document.write('nums : ' + nums + '<br>')
+	document.write('nums2 : '+ nums2 + '<br>')
+	
+	nums.sort(function(left, right) { // sort는 문자열 정렬이기 때문에 콜백함수 사용으로 숫자 정렬
+		return left-right
+		//return right-left
+	})
+	
+	document.write('nums : ' + nums + '<br>')
+</script>
+</head>
+<body>
+
+</body>
+</html>
