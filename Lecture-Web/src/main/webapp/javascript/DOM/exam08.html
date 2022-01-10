@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		let btn = document.querySelector('#btn')
+		let span = document.querySelector('span')
+		
+		// DOM lever 2 표준이벤트모델 방식 addEventListener(이벤트 속성, handler, capturing 사용 유무)
+		btn.addEventListener('click', function(){
+			alert('btn click...')
+		}, true) // capturing 사용하는 경우 부모에서 자식순으로 bubbling 발생
+		
+		span.addEventListener('click', function(){
+			alert('span click...')
+		})
+	}
+</script>
+</head>
+<body>
+	<button id = 'btn'><span>CLICK</span></button>
+</body>
+</html>

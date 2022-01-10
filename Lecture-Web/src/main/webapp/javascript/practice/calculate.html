@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		let tdTag = document.getElementById("output")
+		let nums = document.getElementsByClassName("num")
+		let operator = document.getElementsByClassName("operator")
+		let result
+		let num1
+		let num2
+		let operate = ''
+		
+		for(let i = 0; i<nums.length; i++){
+			nums[i].onclick = function(){
+				tdTag.innerText += nums[i].innerText
+			}
+		}
+		
+		for(let i = 0; i<operator.length; i++){
+			operator[i].onclick = function(){
+				operate =  operator[i].innerText
+				num1 = tdTag.innerText
+				tdTag.innerText = ''
+				}
+			}
+		
+		let equal = document.getElementById("equal")
+		let clear = document.getElementById("clear")
+		
+		equal.onclick = function(){
+			num2 = tdTag.innerText
+			if(operate=='+'){
+				result = Number(num1)+Number(num2)
+			}else if(operate=='-'){
+				result = Number(num1)-Number(num2)
+			}else if(operate=='*'){
+				result = Number(num1)*Number(num2)
+			}else if(operate=='/'){
+				result = Number(num1)/Number(num2)
+			}else if(operate=='%'){
+				result = Number(num1)%Number(num2)
+			}
+			tdTag.innerText = ''
+			
+			tdTag.innerText += result
+		}
+		
+		clear.onclick = function(){
+			tdTag.innerText = ''
+			num1 = 0
+			num2 = 0
+			operate = ''
+		}
+	}
+</script>
+<style type="text/css">
+	table{
+		width: 200px;
+		height: 320px; 
+	}
+	
+	#id{
+		width: 160px;
+		height: 50;
+	}
+	
+	tr{
+		height: 50px;
+	}
+	
+	.num{
+		width: 40px;
+		height: 50px;
+		padding: 2px;
+	}
+	
+	.btn01{
+		width: 36px;
+		height: 46px;
+		padding: 0px;
+		border-radius: 20%;
+	}
+	
+	.operator{
+		width: 36px;
+		height: 46px;
+		padding: 0px;
+		border-radius: 20%;
+	}
+	
+	.bottom{
+		width: 80px;
+		height: 50px;
+		padding: 2px;
+	}
+	
+	.btn02{
+		width: 76px;
+		height: 46px;
+		padding: 0px;
+		border-radius: 20%;
+	}
+	
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr><td id = output colspan="4" align = "right"></td></tr>
+		<tr>
+			<td class = num><button class=btn01>7</button></td>
+			<td class = num><button class=btn01>8</button></td>
+			<td class = num><button class=btn01>9</button></td>
+			<td><button class=operator>/</button></td>
+		</tr>
+		<tr>
+			<td class = num><button class=btn01>4</button></td>
+			<td class = num><button class=btn01>5</button></td>
+			<td class = num><button class=btn01>6</button></td>
+			<td><button class=operator>*</button></td>
+		</tr>
+		<tr>
+			<td class = num><button class=btn01>1</button></td>
+			<td class = num><button class=btn01>2</button></td>
+			<td class = num><button class=btn01>3</button></td>
+			<td><button class=operator>-</button></td>
+		</tr>
+		<tr>
+			<td class = num><button class=btn01>0</button></td>
+			<td class = num><button class=btn01>.</button></td>
+			<td><button class=operator>+</button></td>
+			<td><button class=operator>%</button></td>
+		</tr>
+		<tr>
+			<td class = bottom colspan="2"><button class=btn02 id=equal>=</button></td>
+			<td class = bottom colspan="2"><button class=btn02 id=clear>Clear</button></td>
+		</tr>
+	</table>
+</body>
+</html>

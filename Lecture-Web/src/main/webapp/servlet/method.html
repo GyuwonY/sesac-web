@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/Lecture-Web/method" method="get"> 
+	<!-- action url로 요청 전달 / 요청한 뒤 ulr /Lecture-Web/method?id=aaa : ? 가 붙은 경우 요청할 내용이 있다는 뜻 
+		 뒤로 붙은 내용 = 요청하기위해 입력한 내용 -->
+		ID : <input type="text" name="id">
+		<input type="submit" value="GET방식 호출">
+	</form>
+	<form action="/Lecture-Web/method" method="post">
+		ID : <input type="text" name="id">
+		<input type="submit" value="POST방식 호출">
+	</form>
+</body>
+</html>

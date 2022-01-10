@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		let idTag = document.getElementById("id")
+		// console.log(idTag)
+		// idTag.remove() 태그 동적 삭제 가능, 모든 브라우저에서 실행되지 않음
+		idTag.parentNode.removeChild(idTag) // 일반적인 방법 : 해당 태그의 부모태그로 찾아가 자식을 삭제함
+		
+		pwdTag = document.getElementById('pwd')
+		pwdTag.style.color = 'orange' // css style 속성 추가
+		pwdTag.style.fontSize = '16pt' // 속성내 - 대쉬가 들어간 경우 카멜 표기법으로 바꿔줘야 실행 가능
+		pwdTag.style.backgroundColor = 'gray'
+		pwdTag.style['border-style'] = 'dashed' // [] 대괄호를 통해 css문법 그대로 사용 가능
+		pwdTag.style['border-color'] = 'red'
+		pwdTag.style['border-width'] = '3px'
+	}
+</script>
+</head>
+<body>
+	<table border="1" style= "width:100px; height: 100px;">
+		<tr>
+			<td id = "id"> 아이디 </td>
+		</tr>
+		<tr>
+			<td id="pwd"> 패스워드 </td>
+		</tr>
+	</table>
+</body>
+</html>
