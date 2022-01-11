@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#monitor{
+		text-align: right
+	}
+</style>
+<script>
+	function clickBtn(obj){
+		let data = obj.value
+		
+		let monitor = document.getElementById("monitor")
+		if(data == 'clear'){
+			monitor.value = ''
+		} else if(data == '='){
+			monitor.value = eval(monitor.value)
+		} else {
+			monitor.value += data
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="monitor"><br>
+	<input type="button" value="1" onclick="clickBtn(this)"> 
+	<!-- this를 매개변수로 사용하면	value object로 값을 넘긴다. // this.value를 사용하면 value 자체를 넘긴다 -->
+	<input type="button" value="2" onclick="clickBtn(this)">
+	<input type="button" value="3" onclick="clickBtn(this)">
+	<input type="button" value="4" onclick="clickBtn(this)">
+	<input type="button" value="5" onclick="clickBtn(this)">
+	<input type="button" value="+" onclick="clickBtn(this)">
+	<input type="button" value="-" onclick="clickBtn(this)">
+	<input type="button" value="*" onclick="clickBtn(this)">
+	<input type="button" value="=" onclick="clickBtn(this)">
+	<input type="button" value="clear">
+</body>
+</html>

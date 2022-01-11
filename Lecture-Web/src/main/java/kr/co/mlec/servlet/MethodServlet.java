@@ -59,6 +59,4 @@ public class MethodServlet extends HttpServlet {
 		System.out.println("요청 URI : " + uri);
 		System.out.println("id : " + id);
 	}
-	
-	
 }
