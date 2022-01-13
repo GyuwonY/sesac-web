@@ -1,4 +1,4 @@
-<%@page import="kr.co.mlec.board.BoardVO"%>
+<%@page import="kr.co.mlec.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

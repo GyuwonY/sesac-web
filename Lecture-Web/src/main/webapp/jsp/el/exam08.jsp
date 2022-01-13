@@ -1,4 +1,4 @@
-<%@page import="kr.co.mlec.board.BoardVO"%>
+<%@page import="kr.co.mlec.board.vo.BoardVO"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>

@@ -1,3 +1,5 @@
+<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
+<%@page import="kr.co.mlec.board.vo.BoardVO"%>
 <%@page import="kr.co.mlec.util.JDBCClose"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -14,27 +16,20 @@
 <%
 	// 요청객체 데이터 인코딩
 	request.setCharacterEncoding("utf-8");
-	
 	// 요청객체에서 입력한 데이터 추출
 	String title = request.getParameter("title");
 	String writer = request.getParameter("writer");
 	String content = request.getParameter("content");
 	
-	// 데이터베이스 tbl_board 테이블에 새글 등록
-	Connection conn = new ConnectionFactory().getConnection();
-	StringBuilder sql = new StringBuilder();
-	sql.append("insert into tbl_board(no, title, writer, content) ");
-	sql.append(" values(seq_tbl_board_no.nextval, ?, ?, ?) ");
-	PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	pstmt.setString(1, title);
-	pstmt.setString(2, writer);
-	pstmt.setString(3, content);
-	pstmt.executeUpdate();	
+	BoardVO board= new BoardVO();
+	board.setTitle(title);
+	board.setWriter(writer);
+	board.setContent(content);
+	
+	BoardDAO dao = new BoardDAO();
+	dao.insertBoard(board);
 %>
 <script>
 	alert('새글 등록이 완료되었습니다.')
 	location.href = 'list.jsp'
 </script>
-<%
-	JDBCClose.close(pstmt, conn);
-%>

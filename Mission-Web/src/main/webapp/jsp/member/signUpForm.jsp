@@ -52,7 +52,7 @@
 				</tr>
 				<tr>
 					<td>연락처 
-					<input type = "text" name = "tel01">-<input type = "text" name = "tel02">-<input type = "text" name = "tel03">
+					<input type = "text" name = "tel1">-<input type = "text" name = "tel2">-<input type = "text" name = "tel3">
 					</td>
 				</tr>
 				<tr>

@@ -1,3 +1,6 @@
+<%@page import="kr.co.mlec.status.Status"%>
+<%@page import="kr.co.mlec.member.vo.MemberVO"%>
+<%@page import="kr.co.mlec.member.dao.MemberDAO"%>
 <%@page import="kr.co.mlec.util.JDBCClose"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="kr.co.mlec.util.ConnectionFactory"%>
@@ -6,41 +9,44 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
+
+	MemberDAO dao = new MemberDAO();
+	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
-	String tel01 = request.getParameter("tel01");
-	String tel02 = request.getParameter("tel02");
-	String tel03 = request.getParameter("tel03");
+	String tel1 = request.getParameter("tel1");
+	String tel2 = request.getParameter("tel2");
+	String tel3 = request.getParameter("tel3");
 	String eId = request.getParameter("eId");
 	String domain = request.getParameter("domain");
 	String post = request.getParameter("post");
 	String bAddr = request.getParameter("bAddr");
 	String dAddr = request.getParameter("dAddr");
 	
-	Connection conn = new ConnectionFactory().getConnection();
-	StringBuilder sql = new StringBuilder();
-	sql.append("insert into tbl_member(id, name, password, email_id, email_domain, tel1, tel2, tel3, ");
-	sql.append(" post, basic_addr, detail_addr) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
-	PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	pstmt.setString(1, id);
-	pstmt.setString(2, pw);
-	pstmt.setString(3, name);
-	pstmt.setString(4, eId);
-	pstmt.setString(5, domain);
-	pstmt.setString(6, tel01);
-	pstmt.setString(7, tel02);
-	pstmt.setString(8, tel03);
-	pstmt.setString(9, post);
-	pstmt.setString(10, bAddr);
-	pstmt.setString(11, dAddr);
+	MemberVO member = new MemberVO(id, name, pw, eId, domain, tel1, tel2, tel3, post, bAddr, dAddr);
+	dao.singUp(member);
 	
-	pstmt.executeUpdate();
+	pageContext.setAttribute("type", Status.type);
 %>
 <script>
-	alert('회원가입이 완료되었습니다.')
-	location.href='list.jsp'
+	switch(${type}){
+		case 1:
+			alert('중복된 아이디가 존재합니다. 아이디를 다시 입력해주세요.')
+			<% 
+				Status.type = 0;
+				pageContext.setAttribute("type", Status.type);
+			%>
+			location.href='signUpForm.jsp'
+			break;
+		case 3:
+			alert('회원가입이 완료되었습니다.')
+			<% 
+				Status.type = 0;
+				pageContext.setAttribute("type", Status.type);
+			%>
+			location.href='list.jsp'
+			break;
+	}
 </script>
-<%
-	JDBCClose.close(pstmt, conn);
-%>
+

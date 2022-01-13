@@ -1,4 +1,4 @@
-package kr.co.mlec.board;
+package kr.co.mlec.board.vo;
 
 /*
  *  자바빈즈 클래스

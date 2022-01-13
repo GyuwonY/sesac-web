@@ -1,3 +1,4 @@
+<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
 <%@page import="kr.co.mlec.board.vo.BoardVO"%>
 <%@page import="kr.co.mlec.util.JDBCClose"%>
 <%@page import="java.sql.ResultSet"%>
@@ -16,35 +17,24 @@
  --%>
  <%
 	int boardNo = Integer.parseInt(request.getParameter("no"));
+ 	BoardDAO dao = new BoardDAO();
+ 	BoardVO board = dao.selectBoardByNo(boardNo);
  	
- 	Connection conn = new ConnectionFactory().getConnection();
- 	StringBuilder sql = new StringBuilder();
- 	sql.append("select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') reg_date ");
- 	sql.append(" from tbl_board where no = ? ");
- 	PreparedStatement pstmt = conn.prepareStatement(sql.toString());
- 	pstmt.setInt(1, boardNo);
- 	ResultSet rs = pstmt.executeQuery();
- 	rs.next();
- 
- 	
- 	JDBCClose.close(pstmt, conn);
- 	
- %>
+	pageContext.setAttribute("board", board);
+ %> 	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	hr, table {
-		width: 80%
-	}
-</style>
+<link rel="stylesheet" href="/Mission-Web/css/layout.css">
+<link rel="stylesheet" href="/Mission-Web/css/board.css">
 <script type="text/javascript">
 	function doAction(type){
 		
 		switch(type){
 		case 'U':
+			location.href = "updateForm.jsp?no=${ param.no }"
 			break;
 		case 'D':
 			break;
@@ -56,7 +46,11 @@
 </script>
 </head>
 <body>
-	<div align="center">
+	<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
+	<section>
+		<div align="center">
 		<hr>
 		<h2>게시판 상세</h2>
 		<hr>
@@ -64,27 +58,27 @@
 		<table border="1">
 			<tr>
 				<th width="25%">번호</th>
-				<td><%= rs.getInt("no") %></td>
+				<td>${board.no}</td>
 			</tr>
 			<tr>
 				<th width="25%">제목</th>
-				<td><%= rs.getString("title") %></td>
+				<td>${board.title }</td>
 			</tr>
 			<tr>
 				<th width="25%">작성자</th>
-				<td><%= rs.getString("writer") %></td>
+				<td>${board.writer }</td>
 			</tr>
 			<tr>
 				<th width="25%">내용</th>
-				<td><%= rs.getString("content") %></td>
+				<td>${board.content}</td>
 			</tr>
 			<tr>
 				<th width="25%">조회수</th>
-				<td><%= rs.getInt("view_cnt") %></td>
+				<td>${board.viewCnt }</td>
 			</tr>
 			<tr>
 				<th width="25%">등록일</th>
-				<td><%= rs.getString("reg_date") %></td>
+				<td>${board.regDate }</td>
 			</tr>
 		</table>
 		<br>
@@ -92,5 +86,9 @@
 		<button onclick="doAction('D')">삭제</button>
 		<button onclick="doAction('L')">목록</button>
 	</div>
+	</section>
+	<footer>
+		<%@ include file="/jsp/include/footer.jsp" %>
+	</footer>
 </body>
 </html>
