@@ -75,16 +75,40 @@ public class BoardDAO {
 		}
 	}
 	
+	/**
+	 * 조회수 증가
+	 */
+	public void viewCnt(int boardNo) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("update tbl_board set view_cnt = view_cnt + 1 where no = ?");
+		try(
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		){
+			pstmt.setInt(1, boardNo);
+			pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 게시글 상세 보기
+	 * @param boardNo
+	 * @return
+	 */
 	public BoardVO selectBoardByNo(int boardNo) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') reg_date ");
+		sql.append(" from tbl_board where no = ? ");
 		BoardVO board = null;
-		try{
-			conn = new ConnectionFactory().getConnection();
-			StringBuilder sql = new StringBuilder();
-			sql.append("select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') reg_date ");
-			sql.append(" from tbl_board where no = ? ");
-			pstmt = conn.prepareStatement(sql.toString());
+		try(
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				
+		){
+			
+			
 			pstmt.setInt(1, boardNo);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -98,8 +122,6 @@ public class BoardDAO {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			JDBCClose.close(pstmt, conn);
 		}
 		return board;
 	}
@@ -127,4 +149,25 @@ public class BoardDAO {
 		}
 	}
 	
+	/**
+	 * 페이징
+	 */
+	public int boardCnt() {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select count(no) as no from tbl_board ");
+		int boardCnt = 0;
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		){
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			boardCnt = rs.getInt("no");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return boardCnt;
+	}
 }
