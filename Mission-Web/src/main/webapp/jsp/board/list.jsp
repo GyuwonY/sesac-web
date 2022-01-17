@@ -9,13 +9,12 @@
 <%
 	BoardDAO dao = new BoardDAO();
 	List<BoardVO> list = dao.selectAllBoard(); 
-
 	int boardCnt = dao.boardCnt();
 	int boardPrtCnt = 15; 
-	int pageNo= 1;
-	double pageCnt= Math.ceil(boardCnt/boardPrtCnt);
-	request.setAttribute("list", list);
 
+	pageContext.setAttribute("list", list);
+	pageContext.setAttribute("boardCnt", boardCnt);
+	pageContext.setAttribute("boardPrtCnt", boardPrtCnt);
 %>
 
 <!DOCTYPE html>
@@ -25,12 +24,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/Mission-Web/css/layout.css">
 <link rel="stylesheet" href="/Mission-Web/css/board.css">
+<script src="/Mission-Web/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	function boardPrcCnt(){
-		document.getElementById('boardPrtCnt').value
-		
-	}
-
+	
+	$(document).ready(function(){
+		$('button').click(function(){
+			location.href = "writeForm.jsp"
+		})
+	})
+	
 	function goWriteForm(){
 		location.href = "writeForm.jsp"
 	}
@@ -66,10 +68,25 @@
 					<th width = "16%">글쓴이</th>
 					<th width = "20%">등록일</th>
 				</tr>
-			<jsp:include page="/jsp/board/listTable.jsp"></jsp:include>
+			<c:forEach var="i" begin="${(param.pageNo)}*${boardPrtCnt}" end="${(param.pageNo+3)}*${boardPrtCnt}">
+				<tr>
+					<td>${ board[i].no }</td>
+					<td>
+						<a href="javascript:doAction(${board[i].no })"> <%-- href에서 "javascript: 를 붙이면 javascript 문법이 실행된다. --%>
+							<c:out value="${ board[i].title }"/>
+						</a>
+				
+						<%-- <a href="detail.jsp?no=${ board.no }">
+							<c:out value="${ board.title }"/>
+						</a> --%>
+					</td>
+					<td>${ board[i].writer }</td>
+					<td>${ board[i].regDate }</td>
+				</tr>
+			</c:forEach>
 			</table>
 			<br>
-			<form action="/listTable.jsp?${value }">
+			<form action="/listTable.jsp?value=${value }">
 				<select>
 					<option>>5</option>
 					<option selected>10</option>
@@ -79,7 +96,7 @@
 				</select>
 			</form>
 			<c:forEach var="pageNo" begin="1" end="5">
-				<a href="listTable.jsp?${pageNo}">${pageNo}</a>
+				<a href="list.jsp?pageNo=${pageNo}">${pageNo}</a>
 			</c:forEach>
 			<br>
 			<c:if test="${ not empty userVO }">
