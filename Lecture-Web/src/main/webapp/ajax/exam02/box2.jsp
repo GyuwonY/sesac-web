@@ -40,6 +40,9 @@
 		$(document).on("click", ".detail",function() {
 			let cd = $(this).attr('id')
 			$('button#'+cd).after('<div class="detail02" id='+cd+'>상세보기</div>')
+		})
+		$(document).on("change after append", ".detail02", function(){
+			let cd = $(this).attr('id')
 			$.ajax({
 				url: 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json',
 				type: 'get',
@@ -53,9 +56,7 @@
 					let actors = casting.movieInfoResult.movieInfo.actors
 					console.log(actors)
 					for(let director of directors) {
-						let dName= director.peopleNm
-						console.log(dName)
-						$('div#'+cd).append('장르 : ' + dName)
+						$('div#'+cd).append('감독 : ' + director.peopleNm)
 					}
 					for(let genre of genres){
 						$('div#'+cd).append('장르 : ' + genre.genreNm)
