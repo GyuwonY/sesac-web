@@ -26,15 +26,19 @@ public class DispatcherServlet extends HttpServlet{
 		String uri = request.getRequestURI();
 		String context = request.getContextPath(); // 자신이 설정한 server의 path를 받아와서 경로로 설정 가능
 		uri = uri.substring(context.length());
-		System.out.println("요청 URI : " + uri);
 //		System.out.println("contextPath : " + context);
 		
 		try {
 			Controller control = mappings.getController(uri);
 			String callPage = control.handleRequest(request, response);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(callPage); // forward를 위한 객체 생성
-			dispatcher.forward(request, response); // forward 실행 (request와 response 객체 전달)
+			if(callPage.startsWith("redirect:")) {
+				callPage = callPage.substring("redirect:".length()); 
+				response.sendRedirect(request.getContextPath()+callPage); // redirect 해야하는 경우 바로 response 시킴
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(callPage); // forward를 위한 객체 생성
+				dispatcher.forward(request, response); // forward 실행 (request와 response 객체 전달) 
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 			throw new ServletException(e);

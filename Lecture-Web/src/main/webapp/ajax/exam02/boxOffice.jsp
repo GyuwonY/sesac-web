@@ -55,7 +55,7 @@
 					for(let director of directors) {
 						let dName= director.peopleNm
 						console.log(dName)
-						$('div#'+cd).append('장르 : ' + dName)
+						$('div#'+cd).append('감독명 : ' + dName)
 					}
 					for(let genre of genres){
 						$('div#'+cd).append('장르 : ' + genre.genreNm)
