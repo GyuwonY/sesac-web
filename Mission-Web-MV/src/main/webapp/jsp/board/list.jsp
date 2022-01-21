@@ -30,7 +30,7 @@
    function doAction(boardNo){
       <c:choose>
             <c:when test="${ not empty userVO }">
-               location.href = '${ pageContext.request.contextPath }/detail.do?no='+boardNo
+               location.href = '${ pageContext.request.contextPath }/board/detail.do?no='+boardNo
                      
          </c:when>
             <c:otherwise>
