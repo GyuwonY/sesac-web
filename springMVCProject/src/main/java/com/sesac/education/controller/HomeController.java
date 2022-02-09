@@ -21,9 +21,10 @@ public class HomeController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws ClassNotFoundException 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model) throws ClassNotFoundException {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();

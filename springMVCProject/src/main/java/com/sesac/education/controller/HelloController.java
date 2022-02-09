@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.sesac.BookVO;
+import kr.co.sesac.vo.BookVO;
 
 @Controller
 @RequestMapping("/test")// type level url이 공통된 부분은 class 상단에서 통합시킬 수 있다.

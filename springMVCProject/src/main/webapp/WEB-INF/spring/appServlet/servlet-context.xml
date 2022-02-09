@@ -24,6 +24,13 @@
 	<!-- @Component @Repository @Service @Controller 찾는다 -->
 	<context:component-scan base-package="com, kr" />
 	
-	
-	
+	<!-- 설정파일을 통해 500Error 전역처리 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.ArithmeticException">error/errorPage500</prop>
+				<prop key="java.lang.Exception">error/errorPage500-2</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
