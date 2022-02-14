@@ -21,7 +21,7 @@ hr, table {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	function addMemberForm() {
-		location.href = "${ pageContext.request.contextPath }/member/signup.do"
+		location.href = "${ pageContext.request.contextPath }/member/insertForm"
 	}
 </script>
 </head>
@@ -46,14 +46,14 @@ hr, table {
 
 			<c:forEach items="${ memberList }" var="member">
 				<tr>
-					<td>${ member.id }</td>
+					<td><a href="detail.do">${ member.id }</a></td>
 					<td class="td_center">${ member.name }</td>
-					<td>${ member.eId }@${ member.eDomain }</td>
+					<td>${ member.email_id }@${ member.email_domain }</td>
 					<td class="td_center">${ member.tel1 }-${ member.tel2 }-${ member.tel3 }</td>
 					<td class="td_center">${ member.post }</td>
-					<td>${ member.bAddr }<br>${ member.dAddr }</td>
+					<td>${ member.basic_addr }<br>${ member.detail_addr }</td>
 					<td class="td_center">${ member.type }</td>
-					<td class="td_center">${ member.regDate }</td>
+					<td class="td_center">${ member.reg_date }</td>
 				</tr>
 			</c:forEach>
 

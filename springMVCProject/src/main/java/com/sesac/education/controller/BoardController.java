@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -23,16 +25,25 @@ public class BoardController {
 	BoardService bService;
 	
 	@RequestMapping("/board/list.do")
-	public String boardList(Model model, HttpServletRequest request) {
-		
+	//@ResponseBody 페이지를 통한 응답이 아닌 응답 문서에 데이터 보내기 
+	public String boardList(Model model, HttpServletRequest request,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "contents", required = false) String contents
+			) {
+		System.out.println(keyword + "--->" + contents);
 		Map<String,?> map = RequestContextUtils.getInputFlashMap(request);
 		
 		if(map != null) {
 			model.addAttribute("message", map.get("message"));
 		}
 		
-		model.addAttribute("list", bService.selectAllBoard());
-		return "board/list";
+		model.addAttribute("list", bService.selectAllBoard(keyword, contents));
+		model.addAttribute("boardCnt", bService.boardCnt());
+		
+		if(keyword==null) {
+			return "board/list";
+		}
+		return "board/list_table";
 	}
 	
 	@RequestMapping("/board/detail.do")

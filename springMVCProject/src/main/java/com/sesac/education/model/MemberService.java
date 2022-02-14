@@ -1,18 +1,9 @@
 package com.sesac.education.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import com.sesac.education.utill.ConnectionFactory;
-import com.sesac.education.utill.JDBCClose;
 
 import kr.co.sesac.vo.MemberVO;
 
@@ -26,7 +17,19 @@ public class MemberService {
 		return memberDAO.selectAll();
 	}
 	
-	public void signUp(MemberVO member) {
-		memberDAO.signUp(member);
+	public MemberVO selectById(String id) {
+		return memberDAO.selectById(id);
+	}
+	
+	public int insert(MemberVO member) {
+		return memberDAO.insert(member);
+	}
+	
+	public int update(MemberVO member) {
+		return memberDAO.update(member);
+	}
+	
+	public int delete(String id) {
+		return memberDAO.delete(id);
 	}
 }

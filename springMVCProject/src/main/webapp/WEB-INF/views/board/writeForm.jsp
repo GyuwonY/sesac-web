@@ -43,7 +43,6 @@
 		<form action="${ pageContext.request.contextPath }/board/write.do" method="post" 
 		name="inputForm" onsubmit="return doWrite()"> 
 		<!-- onsubmit : 필수 입력 처리 -->
-			<input type="hidden" name="writer" value="${ userVO.id }">
 			<table border="1">
 				<tr>
 					<th width="23%">제목</th>

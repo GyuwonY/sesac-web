@@ -11,14 +11,14 @@ import kr.co.sesac.vo.BoardVO;
 public class BoardService {
 	
 	@Autowired
-	BoardDAO dao;
-	
+	BoardDAO_Mybatis dao; // Mybatis 이용
+	//BoardDAO dao; JDBC 이용
 	/**
 	 * 전체게시글 조회
 	 */
-	public List<BoardVO> selectAllBoard() {
+	public List<BoardVO> selectAllBoard(String keyword, String contents) {
 		
-		return dao.selectAllBoard();
+		return dao.selectAllBoard(keyword, contents);
 	}
 	
 	public int deleteByNo(int boardNo) {

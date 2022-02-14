@@ -18,9 +18,26 @@
 <script type="text/javascript">
    
    $(document).ready(function(){
-      $('button').click(function(){
+      $('#insertBtn').click(function(){
          location.href = "${pageContext.request.contextPath}/board/writeForm.do"
       })
+      
+      $('#search').on("click", function(){
+    	  var mydata= {
+    			  "keyword":$("#keyword").val(),
+				  "contents" : $("#contents").val()
+    	  }
+    	  console.log(mydata)
+    	  
+    	  $.ajax({
+    		  url:"list.do",
+    		  data:mydata,
+    		  success:function(responseData){
+    			  alert("다녀옴" + responseData);
+    			  $("#here").html(responseData);
+			  }
+		  });
+   	  })
    })
    
    function doAction(boardNo){
@@ -48,37 +65,50 @@
    <section>
       <div align="center">
       <hr>
-      <h2>게시판 목록		<span>${message }</span>			</h2>
+      <h2>게시판 목록
+      	<span>전체건수 : ${boardCnt }</span>
+      	<span>${message }</span>
+      </h2>
+      <hr>
+      조건:
+      <select id="keyword">
+      	<option value="title">타이틀</option>
+      	<option value="writer" selected="selected">글쓴이</option>
+      </select>
+      <input type="text" id="contents" placeholder="입력하세요">
+      <button id="search">검색</button>
       <hr>
       <br>
-      <table border = "1" class="list">
-         <tr>
-            <th width="7%">번호</th>
-            <th>제목</th>
-            <th width = "16%">글쓴이</th>
-            <th width = "10%">조회수</th>
-            <th width = "20%">등록일</th>
-         </tr>
-      
-      <c:forEach items="${ list }" var="board">
-       <tr>
-          <td>${ board.no }</td>
-          <td>
-             <a href="javascript:doAction(${ board.no })">
-                <c:out value="${ board.title }" />
-             </a>
-             
-          </td>
-          <td>${ board.writer }</td>
-          <td>${ board.viewCnt }</td>
-          <td>${ board.regDate }</td>
-       </tr>
-      </c:forEach>
-      </table>
+      <div id="here">
+	      <table border = "1" class="list">
+	         <tr>
+	            <th width="7%">번호</th>
+	            <th>제목</th>
+	            <th width = "16%">글쓴이</th>
+	            <th width = "10%">조회수</th>
+	            <th width = "20%">등록일</th>
+	         </tr>
+	      
+	      <c:forEach items="${ list }" var="board">
+	       <tr>
+	          <td>${ board.no }</td>
+	          <td>
+	             <a href="javascript:doAction(${ board.no })">
+	                <c:out value="${ board.title }" />
+	             </a>
+	             
+	          </td>
+	          <td>${ board.writer }</td>
+	          <td>${ board.viewCnt }</td>
+	          <td>${ board.regDate }</td>
+	       </tr>
+	      </c:forEach>
+	      </table>
+      </div>
       <br>
       <%-- <c:if test="${ not empty userVO }"> --%>
 
-      <button>새글등록</button>
+      <button id="insertBtn">새글등록</button>
       <%-- </c:if> --%>
    </div>   
    </section>    

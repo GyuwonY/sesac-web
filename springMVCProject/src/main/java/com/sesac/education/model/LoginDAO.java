@@ -4,14 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import org.springframework.stereotype.Repository;
+import javax.sql.DataSource;
 
-import com.sesac.education.utill.ConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import kr.co.sesac.vo.LoginVO;
 
 @Repository
 public class LoginDAO {
+	
+	@Autowired
+	DataSource dataSource;
 	
 	/**
 	 * 로그인 서비스
@@ -32,7 +36,7 @@ public class LoginDAO {
 		sql.append(" from tbl_member ");
 		sql.append(" where id = ? and password = ? ");
 		try(
-			Connection conn = new ConnectionFactory().getConnection();
+			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		){
 			pstmt.setString(1, loginVO.getId());
